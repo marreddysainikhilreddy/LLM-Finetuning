@@ -4,6 +4,18 @@ Fine tuning **Llama 3.2 3B Instruct** into a compact reasoning model through sup
 
 Notebook: [`finetune_in_unsloth.ipynb`](finetune_in_unsloth.ipynb)
 
+## Architecture
+
+```mermaid
+flowchart LR
+    A["Llama 3.2 3B Instruct<br/>base model"] --> C["QLoRA fine tuning<br/>Unsloth and TRL SFTTrainer<br/>4 bit, LoRA rank 16, bf16"]
+    B["R1 Distill SFT dataset<br/>reasoning traces from DeepSeek R1"] --> C
+    C --> D["Merged model"]
+    C --> G["Chat template<br/>inference check"]
+    D --> E["GGUF conversion"]
+    E --> F["Ollama<br/>local inference on consumer hardware"]
+```
+
 ## Pipeline
 
 1. **Base model**: `unsloth/Llama-3.2-3B-Instruct` loaded in 4 bit precision (QLoRA) with [Unsloth](https://github.com/unslothai/unsloth) for memory efficient training on a single GPU
