@@ -1,5 +1,9 @@
 # LLM Reasoning Distillation with QLoRA Fine Tuning
 
+<p align="center">
+  <img src="docs/images/project-cover.jpg" alt="QLoRA Fine-Tuning — llm distillation" width="720" />
+</p>
+
 Fine tuning **Llama 3.2 3B Instruct** into a compact reasoning model through supervised fine tuning on **reasoning traces distilled from DeepSeek R1**, then exporting the model to GGUF and serving it locally with Ollama. The project covers the full LLM post training lifecycle: quantized training, inference evaluation, and quantized local deployment.
 
 Notebook: [`finetune_in_unsloth.ipynb`](finetune_in_unsloth.ipynb)
